@@ -17,3 +17,5 @@ NEWSPIDER_MODULE = 'mtchism_crawler.spiders'
 ITEM_PIPELINES = [
     'mtchism_crawler.pipelines.FoodPipeline',
 ]
+
+LOG_LEVEL = 'INFO'

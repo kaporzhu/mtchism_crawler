@@ -24,20 +24,19 @@ class BooheeSpider(Spider):
         """
         soup = BeautifulSoup(response.body, 'lxml')
 
-        # check if it's a valid page
         if not soup.find(class_='food-list'):
-            yield None
+            return
 
         # check if there is next page
         next_page = soup.find('a', class_='next_page')
         if next_page:
             yield Request('http://www.boohee.com{}'.format(next_page['href']))
-#         else:
-#             # no more page for this group, goto next group
-#             group_id = re.match('.*view_group/(\d*)', response.url).group(1)
-#             next_group_id = int(group_id) + 1
-#             next_group_url = 'http://www.boohee.com/food/view_group/{}'.format(next_group_id)  # noqa
-#             yield Request(next_group_url)
+        else:
+            # no more page for this group, goto next group
+            group_id = re.match('.*view_group/(\d*)', response.url).group(1)
+            next_group_id = int(group_id) + 1
+            next_group_url = 'http://www.boohee.com/food/view_group/{}'.format(next_group_id)  # noqa
+            yield Request(next_group_url)
 
         # parse foods
         for food in soup.select('.food-list'):

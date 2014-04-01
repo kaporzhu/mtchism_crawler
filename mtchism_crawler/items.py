@@ -1,11 +1,15 @@
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/topics/items.html
-
+# -*- coding: utf-8 -*-
 from scrapy.item import Item, Field
 
-class MtchismCrawlerItem(Item):
-    # define the fields for your item here like:
-    # name = Field()
-    pass
+
+class FoodItem(Item):
+    """
+    Food item
+    """
+    name = Field()
+    category_name = Field()
+    heat = Field()  # 热量（大卡）
+    carbohydrate = Field()  # 碳水化合物（克）
+    fat = Field()  # 脂肪（克）
+    protein = Field()  # 蛋白质（克）
+    cellulose = Field()  # 纤维素（克）

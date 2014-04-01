@@ -13,3 +13,7 @@ NEWSPIDER_MODULE = 'mtchism_crawler.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'mtchism_crawler (+http://www.yourdomain.com)'
+
+ITEM_PIPELINES = [
+    'mtchism_crawler.pipelines.FoodPipeline',
+]
